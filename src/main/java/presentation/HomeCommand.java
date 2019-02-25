@@ -32,9 +32,11 @@ public class HomeCommand extends Command {
             
             out.println("<h1>My Home Page</h1>");
             
-            out.println("<form method=get action=Glazier/price>");
-            out.println("<input type=text placeholder=frame name=frame_name>");
-            out.println("<input type=submit value=Price>");
+            out.println("<form method='GET' action='Glazier/price'>");
+            out.println("Frame <input type='text' placeholder='frame type' name='frame_name'>");
+            out.println("Height <input type='number' name='height'>");
+            out.println("Width <input type='number' name='width'>");
+            out.println("<input type='submit' value='Get Price'>");
             out.println("</form>");
             
             out.println("</body>");

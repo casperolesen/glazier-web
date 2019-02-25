@@ -20,7 +20,9 @@ public class PriceCommand extends Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String myframe = request.getParameter("frame_name");
+        String frame_name = request.getParameter("frame_name");
+        double height = Double.parseDouble(request.getParameter("height"));
+        double width = Double.parseDouble(request.getParameter("width"));
 
         FrameDAO frameDao = new FrameDAO();
         GlassDAO glassDao = new GlassDAO();
@@ -28,10 +30,10 @@ public class PriceCommand extends Command {
         PriceController c = new PriceController();
         
         
-        Frame frame = frameDao.getFrame(myframe);
+        Frame frame = frameDao.getFrame(frame_name);
         Glass glass = glassDao.getGlass();
         
-        double total_price = c.getPrice(frame, glass);
+        double total_price = c.getPrice(frame, glass, height, width);
 
         response.setContentType("text/html;charset=UTF-8");
 
